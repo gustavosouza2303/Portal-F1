@@ -47,3 +47,6 @@ Antes de começar, verifique se você atende aos seguintes requisitos:
 ## 📖 Projeto Acadêmico
 
 Este projeto está sendo desenvolvido englobando as disciplinas de **Algoritmos, Arq. Computacional, Banco de Dados, Introdução à S.O., T.I, P.I e SocioEmocional** na **SPTech School**.
+
+## 📄 Especificação do Projeto (Acesso apenas com autorização)
+- <a href="https://drive.google.com/file/u/0/d/1Y6OvhrrcFJJVwCpJALfT-Ktx0eK_PGth/view?usp=sharing" target="_blank">Documentação</a>
