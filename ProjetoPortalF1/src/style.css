@@ -3,7 +3,7 @@ body {
     padding: 0;
     text-decoration: none;
     font-family: "Inter", sans-serif;
-    background: radial-gradient(circle at top, #ffffff, #f3f3f3);
+    background: linear-gradient(to bottom, #ffffff, #f3f3f3 60%);
 }
 
 #container_header {
@@ -34,7 +34,7 @@ height: 100px;
     align-items: center;
     height: 90vh;
     overflow: hidden;
-    margin-bottom: 150px;
+    margin-bottom: 350px;
 }
 
 #container_banner::before {
@@ -67,15 +67,16 @@ height: 100px;
     z-index: 2;
 }
 
-#conteiner_conteudo {
+#conteiner_cards {
     display: flex;
     justify-content: center;
-    gap: 50px;
+    gap: 100px;
+    margin-bottom: 150px;
 }
 
-#conteiner_conteudo #cardQuemSomos{
+#conteiner_cards #cardQuemSomos{
     display: flex;
-    width:600px;
+    width:650px;
     height: 500px;
     text-align: justify;
     hyphens: auto;
@@ -87,18 +88,18 @@ height: 100px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-#conteiner_conteudo #cardQuemSomos h1 {
+#conteiner_cards #cardQuemSomos h1 {
     text-align: center;
 }
 
 
-#conteiner_conteudo #cardQuemSomos img {
+#conteiner_cards #cardQuemSomos img {
     height: 500px;
 }
 
-#conteiner_conteudo #cardObjetivo{
+#conteiner_cards #cardObjetivo{
     display: flex;
-    width:600px;
+    width:650px;
     height: 500px;
     text-align: justify;
     hyphens: auto;
@@ -110,23 +111,40 @@ height: 100px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
 }
 
-#conteiner_conteudo #cardObjetivo h1 {
+#conteiner_cards #cardObjetivo h1 {
     text-align: center;
 }
 
 
-#conteiner_conteudo #cardObjetivo img {
+#conteiner_cards #cardObjetivo img {
     height: 500px;
+}
+
+@keyframes disappear {
+    from {
+        opacity: 1;
+
+    }
+    to {
+        opacity: 0;
+
+    }
+}
+
+.banner {
+    animation: disappear linear;
+    animation-timeline: view();
+    animation-range: exit 0%;
 }
 
 @keyframes appear {
     from {
         opacity: 0;
-        scale: 0.5;
+
     }
     to {
         opacity: 1;
-        scale: 1;
+
     }
 }
 
@@ -136,6 +154,74 @@ height: 100px;
     animation-range: entry 0;
 }
 
+#container_conheca {
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    background: linear-gradient(#f3f3f3 10%, #ff1e00 25%,#c40000 100%);
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0;
+}
+
+#container_conheca #cardTexto {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    color: white;
+    border: solid 2px black;
+    border-radius: 20px;
+    padding: 25px;
+}
+
+#container_conheca #cardTexto h2{
+    text-align: center;
+}
+
+#container_conheca #cardTexto button {
+    align-self: center;
+    width: 100px;
+    border: none;
+    height: 35px;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.1);
+     box-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff;
+}
+
+#container_equipes {
+    background-color: #c40000;
+}
+
+#container_equipes span{
+    display: flex;
+    justify-self: center;
+    font-weight: bolder;
+    font-size: 30px;
+    margin-bottom: 100px;
+}
+
+#container_equipes #logoEquipes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    gap: 50px;
+    padding-bottom: 100px;
+}
+
+#container_equipes img {
+    width: 150px;
+}
+
 #footer-content {
     display: flex;
     justify-content: space-between;
@@ -143,9 +229,8 @@ height: 100px;
 }
 
 #footer {
-    margin-top: 50px;
     padding: 40px 20px 20px;
-    background: linear-gradient(90deg, #ff1e00, #c40000);
+    background: linear-gradient(to top, #ff1e00, #c40000);
     color: white;
 }
 
