@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./src/style.css">
+    <script src="./src/script.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 <body>
     <div id="container_header">
         <img src="./src/Imagens/logof1preta.png" alt="">
         <ul>
-            <li>Home</li>
-            <li>Categoria</li>
+            <li onclick="home()">Home</li>
+            <li onclick="categoria()">Categoria</li>
             <li>Equipes</li>
             <li>Comunidade</li>
         </ul>
@@ -59,7 +60,7 @@
                 tecnologicamente avançados do planeta. Organizada pela Fédération Internationale de l'Automobile (FIA), a 
                 competição acontece em diversos países ao longo do ano, em circuitos de rua e autódromos.</p>
 
-                <button>Saiba Mais</button>
+                <button onclick="categoria()">Saiba Mais</button>
             </div>
             <img src="./src/Imagens/logof1preta.png" alt="">
             
@@ -122,10 +123,10 @@
         <div id="footer_infos">
             <h3>Navegação</h3>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Categoria</a></li>
-                <li><a href="#">Equipes</a></li>
-                <li><a href="#">Comunidade</a></li>
+                <li onclick="home()">Home</li>
+                <li onclick="categoria()">Categoria</li>
+                <li>Equipes</li>
+                <li>Comunidade</li>
             </ul>
         </div>
 

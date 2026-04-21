@@ -8,6 +8,7 @@ body {
 
 #container_header {
 display: flex;
+position: relative;
 justify-content: space-between;
 background: linear-gradient(90deg, #ff1e00, #c40000);
 height: 100px;
@@ -25,6 +26,16 @@ height: 100px;
     align-self: center;
     list-style-type: none;
     color: white;
+}
+
+#container_header ul li {
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#container_header ul li:hover {
+    transform: scale(1.1);
+    font-weight: bold;
 }
 
 #container_banner {
@@ -63,7 +74,7 @@ height: 100px;
     position: relative;
     width: auto;
     height: 500px;
-
+    background-image: src;
     z-index: 2;
 }
 
@@ -108,16 +119,6 @@ height: 100px;
     border-radius: 12px;
     padding: 25px;
     border: 1px solid #e9e9e9;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
-}
-
-#conteiner_cards #cardObjetivo h1 {
-    text-align: center;
-}
-
-
-#conteiner_cards #cardObjetivo img {
-    height: 500px;
 }
 
 @keyframes disappear {
@@ -132,27 +133,32 @@ height: 100px;
 }
 
 .banner {
-    animation: disappear linear;
+    animation: disappear 0.8s ease-out;
     animation-timeline: view();
-    animation-range: exit 0%;
+    animation-range: exit 20% 100%;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @keyframes appear {
     from {
         opacity: 0;
-
+        transform: scale(0.8);
+        filter: blur(10px);
     }
     to {
         opacity: 1;
-
+        transform: scale(1);
+        filter: blur(0px);
     }
 }
 
 .card {
     animation: appear linear;
     animation-timeline: view();
-    animation-range: entry 0;
+    animation-range: entry 0%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 #container_conheca {
     padding-top: 100px;
@@ -194,11 +200,18 @@ height: 100px;
 
 button:hover {
     transform: scale(1.1);
-     box-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff;
+    box-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff;
 }
 
 #container_equipes {
     background-color: #c40000;
+}
+
+#container_equipes #logoEquipes #equipe:hover {
+    scale: 1.1;
+    box-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff;
+    transition: 0.5s;
+    cursor: default;
 }
 
 #container_equipes span{
@@ -286,20 +299,20 @@ button:hover {
     padding: 0;
 }
 
+
 #footer_container #footer_infos ul li {
     margin-bottom: 6px;
-}
-
-#footer_container #footer_infos ul li a {
     text-decoration: none;
     color: white;
     opacity: 0.9;
-    transition: 0.3s;
+    cursor: pointer;
+    transition: 0.5s;
 }
 
-#footer_container #footer_infos ul li a:hover {
+#footer_container #footer_infos ul li:hover {
     opacity: 1;
-    text-decoration: underline;
+    transform: scale(1.1);
+    font-weight: bold;
 }
 
 
@@ -310,3 +323,55 @@ button:hover {
     border-top: 2px solid rgba(255,255,255,0.3);
     font-size: 14px;
 }
+
+/* página da categoria */
+
+#container_bannerCategoria {
+    position: relative;
+    height: 100vh;
+    margin-bottom: 150px;
+}
+
+#container_bannerCategoria img {
+    width: 100%;
+    height: 800px;
+}
+
+#containerConteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+#containerConteudo #Conteudo {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    gap: 50px;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #ffffff, #f8f8f8);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08),0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+}
+
+#containerConteudo #Conteudo #ConteudoTexto {
+    font-size: 18px;
+}
+
+
+#containerConteudo #Conteudo #ConteudoImgs img {
+    width: 500px;
+    height: auto;
+}
+
+#footerConteudos {
+    padding: 40px 20px 20px;
+    background: linear-gradient(to top, #ff1e00, #c40000);
+    color: white;
+    margin-top: 150px;
+}
+
+/* pagina das equipes */
