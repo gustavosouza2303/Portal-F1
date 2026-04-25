@@ -1,8 +1,11 @@
+* {
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+}
+
 body {
     margin: 0;
     padding: 0;
-    text-decoration: none;
-    font-family: "Inter", sans-serif;
     background: linear-gradient(to bottom, #ffffff, #f3f3f3 60%);
 }
 
@@ -375,3 +378,46 @@ button:hover {
 }
 
 /* pagina das equipes */
+
+#container_bannerEquipes {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    overflow: hidden;
+}
+
+#container_times #alpine {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #0090FF;
+    padding: 250px 0px 250px 0px;
+    gap: 150px;
+    background: linear-gradient(to bottom, #0090FF 90%, #006F62 10%);
+}
+
+#equipeTexto {
+    flex: 0 0 calc(50% - 10px); 
+    width: 800px;
+    align-items: center;
+}
+
+#equipeImg {
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    gap: 50px;
+}
+
+#equipeImg img {
+    width: 350px;
+}
+
+#container_times #aston {
+    background-color: #006F62;
+    height: 10vh;
+}

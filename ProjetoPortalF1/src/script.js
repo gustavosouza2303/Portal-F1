@@ -5,3 +5,7 @@ function home() {
 function categoria() {
         window.location.href="./categoria.html";
     }
+
+function equipes() {
+    window.location.href="./equipes.html";
+}
