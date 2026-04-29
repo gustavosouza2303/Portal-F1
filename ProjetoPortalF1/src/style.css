@@ -11,6 +11,178 @@ body {
     background: linear-gradient(to bottom, #ffffff, #f3f3f3 60%);
 }
 
+/* Login / Cadastro */
+
+#container_bannerLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 88vh;
+    overflow: hidden;
+
+}
+
+#container_bannerLogin video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+    z-index: -1;
+}
+
+#container_inputs {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+#container_inputs #tituloLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+/* Login */
+#container_inputs #login {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    justify-self: center;
+    align-self: center;
+    background: linear-gradient(180deg, #ffffff, #fafafa);
+    border-radius: 25px;
+    padding: 50px;
+    gap: 25px;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+}
+
+#container_inputs #login input {
+    width: 350px;
+    height: 30px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 25px;
+}
+
+#container_inputs #login button{
+    align-self: center;
+    width: 100px;
+    border: none;
+    height: 35px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #ff1e00, #c40000);
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#container_inputs #login button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 5px #ff1e00, 0 0 10px #ff1e00, 0 0 15px #ff1e00;
+}
+
+#container_inputs #login span {
+    color: black;
+    font-size: 18px;
+    align-self: center;
+}
+
+#container_inputs #login span a {
+    text-decoration: none;
+    color: #000000;
+}
+
+#container_inputs #login span a:hover {
+    transform: scale(1.1);
+    font-weight: bold;
+}
+
+/* Cadastro */
+
+#container_inputs #tituloCadastro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#container_inputs #cadastro {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    justify-self: center;
+    align-self: center;
+    background: linear-gradient(180deg, #ffffff, #fafafa);
+    border-radius: 25px;
+    padding: 50px;
+    gap: 25px;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+}
+
+#container_inputs #cadastro input {
+    width: 350px;
+    height: 30px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 25px;
+}
+
+#container_inputs #cadastro button{
+    align-self: center;
+    width: 120px;
+    border: none;
+    height: 35px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #ff1e00, #c40000);
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#container_inputs #cadastro button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 5px #ff1e00, 0 0 10px #ff1e00, 0 0 15px #ff1e00;
+}
+
+#container_inputs #cadastro span {
+    color: black;
+    font-size: 18px;
+    align-self: center;
+}
+
+#container_inputs #cadastro span a {
+    text-decoration: none;
+    color: #000000;
+}
+
+#container_inputs #cadastro span a:hover {
+    transform: scale(1.1);
+    font-weight: bold;
+}
+
+#divErro {
+    align-self: center;
+    color: #aa0000;
+}
+
+#divForcaSenha {
+    font-size: 14px;
+    color: #8B0000;
+    margin-top: 2px;
+}
+
+
+/* Home */
+
 #container_header {
 display: flex;
 position: relative;
