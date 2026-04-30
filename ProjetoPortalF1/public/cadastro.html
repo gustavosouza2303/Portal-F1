@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./src/style.css">
+    <script src="./src/script.js"></script>
+</head>
+<body>
+
+    <div id="container_bannerLogin" class="banner">
+        <video autoplay muted loop playsinline>
+        <source src="./src/Videos/F1intro2026.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo.
+    </video>
+    <div id="container_inputs">
+        <div id="cadastro">
+            <div id="tituloCadastro">
+                <h1>Portal F1</h1>
+                <h2>Cadastro</h2>
+            </div>
+            <div>
+                Nome: <br>
+                <input type="text" id="ipt_login"> <br>
+            </div>
+            <div>
+                Email: <br>
+                <input type="text" id="ipt_email"> <br>
+            </div>
+            <div>
+                Senha: <br>
+                <input type="text" id="ipt_senha" oninput="verificar()"> <br>
+                <div id="divForcaSenha"></div>
+            </div>
+            <div>
+                Confirmar Senha: <br>
+                <input type="text" id="ipt_confirmSenha"> <br>
+            </div>
+            <div>
+                <div id="divErro"></div>
+            </div>
+            
+            <button onclick="cadastrar()">Cadastrar-se</button>
+            <span>Já tem uma conta? Logue-se <a href="./login.html">Aqui</a>!</span>
+
+        </div>
+    </div>
+
+    </div>
+
+
+</body>
+</html>
+
+<script>
+    function cadastrar() {
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = ipt_login.value;
+    var emailVar = ipt_email.value;
+    var senhaVar = ipt_senha.value;
+    var confirmacaoSenhaVar = ipt_confirmSenha.value;
+
+    //validações 
+    let tamanhoNome = nomeVar.length;
+    let verificarEmail = emailVar.includes('@');
+    let verificarSenha = senhaVar.length;
+
+
+    // Verificando se há algum campo em branco ou inválido
+    if (
+      nomeVar == "" &&
+      emailVar == "" &&
+      senhaVar == "" &&
+      confirmacaoSenhaVar == ""
+    ) {
+      divErro.innerHTML =
+        "Todos os campos estão em branco!";
+
+      finalizarAguardar();
+      return false;
+    } else if (tamanhoNome < 1) {
+      divErro.innerHTML =
+        "O campo <b>NOME</b> deve conter 1 ou mais caracteres!";
+
+        finalizarAguardar();
+      return false;
+    } else if (!verificarEmail) {
+      divErro.innerHTML =
+        "O campo <b>EMAIL</b> deve conter o caracteres <b>@</b>";
+
+        finalizarAguardar();
+      return false;
+    } else if (verificarSenha <= 6) {
+        if (verificarSenha )
+      divErro.innerHTML =
+        "O campo <b>SENHA</b> deve conter pelo menos <br> <b>6 caracteres</b>";
+
+        finalizarAguardar();
+      return false;
+    } else if (confirmacaoSenhaVar != senhaVar) {
+      divErro.innerHTML =
+        "O campo <b>CONFIRMAR SENHA</b> deve ser  <br> exatamente igual ao campo <b>SENHA</b>";
+
+        finalizarAguardar();
+      return false;
+    }
+
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+          divErro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+}
+
+function verificar() {
+        let senha = ipt_senha.value;
+        let forca = 0;
+        let temLetra = senha.toLowerCase() != senha.toUpperCase();
+
+            if (temLetra && senha != senha.toString().toUpperCase()) {
+                forca++;
+            }
+    
+            if (temLetra && senha != senha.toString().toLowerCase()) {
+                forca++;
+            }
+            if (temLetra && senha.length >= 6) {
+                forca++;
+            }
+    
+            if (forca == 0) {
+                divForcaSenha.innerHTML = `A senha está <b>insegura!</b>`
+            } else if (forca == 1) {
+                divForcaSenha.innerHTML = `A segurança da senha está <b>Fraca</b>`
+            } else if (forca == 2) {
+                divForcaSenha.innerHTML = `A segurança da senha está <b>Média!</b>`
+            } else if (forca == 3) {
+                divForcaSenha.innerHTML = `A segurança da senha está <b>Forte!</b>`
+            } else {
+                divForcaSenha.innerHTML = `Senha Inválida!`;
+            }
+ }
+
+</script>
