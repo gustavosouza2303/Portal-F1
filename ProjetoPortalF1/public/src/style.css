@@ -634,7 +634,7 @@ button:hover {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    background: linear-gradient(to left,whitesmoke 20%,#FF0000,#8B0000, black);
+    background: linear-gradient(to left, #000000, #7a0000, #ff0000, #C8CCCE);
     align-items: center;
     justify-content: center;
     padding:250px 0px 250px 0px;
