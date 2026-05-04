@@ -10,4 +10,11 @@ function equipes() {
     window.location.href="./equipes.html";
 }
 
+function quiz() {
+    window.location.href = "./quiz.html"
+}
+
+function irQuiz() {
+    window.location.href= "./perguntasQuiz.html"
+}
  

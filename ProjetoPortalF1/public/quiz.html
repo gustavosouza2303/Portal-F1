@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./src/style.css">
+    <script src="./src/script.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <script src="./src/sessao.js"></script>
+</head>
+<body > 
+    <!-- onload="validarSessao()" -->
+    <div id="container_header">
+        <img src="./src/Imagens/logof1preta.png" alt="">
+        <ul>
+            <li onclick="home()">Home</li>
+            <li onclick="categoria()">Categoria</li>
+            <li onclick="equipes()">Equipes</li>
+        </ul>
+    </div>
+    <div id="container_bannerQuiz" class="banner">
+        <img src="./src/Imagens/logoPortal.png" alt="">
+        <h2>Quiz</h2>
+    </div>
+
+
+    <div id="container_Quiz">
+        <h1>Quiz</h1>
+
+        <p>Bom, agora que chegou até aqui, temos um desafio para você!</p>
+
+        <p>Preparamos um quiz, englobando todo o conteúdo apresentado no site para você testar seus novos conhecimentos!</p>
+
+        <p>Não se preocupe com a pontuação, você poderá refazer o quiz quantas vezes quiser!</p>
+
+        <button onclick="irQuiz()">Iniciar Quiz!</button>
+    </div>
+
+
+
+    <footer id="footer">
+    <div id="footer_container">
+
+        <div id="footer_infos">
+            <img src="./src/Imagens/logoPortal.png" alt="">
+            <p>Lider em soluções tecnológicas.</p>
+        </div>
+
+        <div id="footer_infos">
+            <h3>Navegação</h3>
+            <ul>
+                <li onclick="home()">Home</li>
+                <li onclick="categoria()">Categoria</li>
+                <li onclick="equipes()">Equipes</li>
+            </ul>
+        </div>
+
+        <div id="footer_infos">
+            <h3>Contato</h3>
+            <p><b>E-Mail:</b> 📧 contato@portalf1.com</p>
+            <p><b>WhatsApp:</b> 📞 (11) 99999-9999</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Portal F1</p>
+    </div>
+</footer>
+</body>
+</html>
+
+<script>
+    function irQuiz() {
+        window.location.href="./perguntasQuiz.html"
+    }
+</script>

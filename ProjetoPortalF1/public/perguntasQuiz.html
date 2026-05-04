@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./src/style.css">
+    <script src="./src/script.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <script src="./src/sessao.js"></script>
+</head>
+<body onload="carregarQuiz()"> 
+    <div id="container_header">
+        <img src="./src/Imagens/logof1preta.png" alt="">
+        <ul>
+            <li onclick="home()">Home</li>
+            <li onclick="categoria()">Categoria</li>
+            <li onclick="equipes()">Equipes</li>
+            <li onclick="quiz()">Quiz</li>
+        </ul>
+    </div>
+    <div id="container_pai">
+        <div id="container_questoes">
+            <div id="container_pergunta">
+                <h1 id="tituloPergunta">Questao</h1>
+    
+                <p id="textoPergunta"></p>
+    
+                <div id="respostas">
+                    
+                </div>
+            </div>
+            <div id="container_qtdPerguntas">
+                <div id="questoes">Q1</div>
+                <div id="questoes">Q2</div>
+                <div id="questoes">Q3</div>
+                <div id="questoes">Q4</div>
+                <div id="questoes">Q5</div>
+                <div id="questoes">Q6</div>
+                <div id="questoes">Q7</div>
+                <div id="questoes">Q8</div>
+                <div id="questoes">Q9</div>
+                <div id="questoes">Q10</div>
+                <div id="questoes">Q11</div>
+                <div id="questoes">Q12</div>
+                <div id="questoes">Q13</div>
+                <div id="questoes">Q14</div>
+                <div id="questoes">Q15</div>
+                <div id="questoes">Q16</div>
+                <div id="questoes">Q17</div>
+                <div id="questoes">Q18</div>
+                <div id="questoes">Q19</div>
+                <div id="questoes">Q20</div>
+                <div id="questoes">Q21</div>
+                <div id="questoes">Q22</div>
+                <div id="questoes">Q23</div>
+                <div id="questoes">Q24</div>
+                <div id="questoes">Q25</div>
+                <div id="questoes">Q26</div>
+                <div id="questoes">Q27</div>
+                <div id="questoes">Q28</div>
+                <div id="questoes">Q29</div>
+                <div id="questoes">Q30</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer id="footer">
+    <div id="footer_container">
+
+        <div id="footer_infos">
+            <img src="./src/Imagens/logoPortal.png" alt="">
+            <p>Lider em soluções tecnológicas.</p>
+        </div>
+
+        <div id="footer_infos">
+            <h3>Navegação</h3>
+            <ul>
+                <li onclick="home()">Home</li>
+                <li onclick="categoria()">Categoria</li>
+                <li onclick="equipes()">Equipes</li>
+            </ul>
+        </div>
+
+        <div id="footer_infos">
+            <h3>Contato</h3>
+            <p><b>E-Mail:</b> 📧 contato@portalf1.com</p>
+            <p><b>WhatsApp:</b> 📞 (11) 99999-9999</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Portal F1</p>
+    </div>
+</footer>
+</body>
+</html>
+
+<script>
+let perguntas = [];
+let indiceAtual = 0;
+let pontuacao = 0;
+
+function carregarQuiz() {
+    fetch("/quiz/listar")
+        .then(res => res.json())
+        .then(data => {
+            perguntas = data;
+            mostrarPergunta();
+        })
+        .catch(err => {
+            console.log("Erro ao carregar quiz:", err);
+        });
+}
+
+function mostrarPergunta() {
+    if (indiceAtual >= perguntas.length) {
+        finalizarQuiz();
+        return;
+    }
+
+    let p = perguntas[indiceAtual];
+
+    tituloPergunta.innerText = `Questão ${indiceAtual + 1}`;
+
+    textoPergunta.innerText = p.pergunta;
+
+    respostas.innerHTML = `
+        <label>
+            <input type="radio" name="resposta" value="A"> A. ${p.alternativaA}
+        </label><br>
+
+        <label>
+            <input type="radio" name="resposta" value="B"> B. ${p.alternativaB}
+        </label><br>
+
+        <label>
+            <input type="radio" name="resposta" value="C"> C. ${p.alternativaC}
+        </label><br>
+
+        <label>
+            <input type="radio" name="resposta" value="D"> D. ${p.alternativaD}
+        </label><br><br>
+
+        <button onclick="responder()">Próxima</button>
+    `;
+}
+
+function responder() {
+    let selecionada = document.querySelector('input[name="resposta"]:checked');
+
+    if (!selecionada) {
+        alert("Selecione uma resposta!");
+        return;
+    }
+
+    let respostaUsuario = selecionada.value;
+    let correta = perguntas[indiceAtual].correta;
+
+    if (respostaUsuario === correta) {
+        pontuacao++;
+    }
+
+    indiceAtual++;
+    mostrarPergunta();
+}
+
+function finalizarQuiz() {
+    container_pergunta.innerHTML = `
+        <h2>Quiz finalizado!</h2>
+        <p>Sua pontuação: ${pontuacao} / ${perguntas.length}</p>
+    `;
+}
+</script>
