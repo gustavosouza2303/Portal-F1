@@ -6,6 +6,16 @@ function listarPerguntas() {
     return database.executar(instrucapSql);
 }
 
+
+function salvarResultado(idUsuario, acertos, erros) {
+    var instrucaoSql = `
+        INSERT INTO resultadoQuiz (fkUsuario, acertos, erros)
+        VALUES (${idUsuario}, ${acertos}, ${erros});
+    `;
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
-    listarPerguntas
+    listarPerguntas,
+    salvarResultado
 };

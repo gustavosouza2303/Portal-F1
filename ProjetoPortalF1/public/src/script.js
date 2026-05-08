@@ -17,4 +17,12 @@ function quiz() {
 function irQuiz() {
     window.location.href= "./perguntasQuiz.html"
 }
+
+function perfil() {
+    window.location.href= "./dashboard.html"
+}
+
+function icones() {
+    window.location.href= "./icones.html"
+}
  

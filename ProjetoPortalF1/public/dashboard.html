@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="./src/style.css" />
+    <link rel="stylesheet" href="./src/dashboard.css" />
+
+    <script src="./src/script.js"></script>
+    <script src="./src/sessao.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+  <!-- <body onload="validarSessao()"> -->
+  <body>
+    <div id="container_header">
+      <img src="./src/Imagens/logof1preta.png" />
+      <ul>
+        <li onclick="home()">Home</li>
+        <li onclick="categoria()">Categoria</li>
+        <li onclick="equipes()">Equipes</li>
+        <li onclick="icones()">Icones</li>
+        <li onclick="quiz()">Quiz</li>
+        <li onclick="perfil()">Perfil</li>
+      </ul>
+    </div>
+
+    <div id="dashboard_container">
+
+      <div id="sidebar">
+        <div id="perfil">
+          <img src="./src/Imagens/equipes/Ferrari/charles.jpg" />
+          <h3 id="nomeUsuario">Usuário</h3>
+          <p id="emailUsuario">email@email.com</p>
+        </div>
+
+        <div id="menu">
+          <span>🏆 Ranking</span>
+          <span onclick="limparSessao()">🚪 Sair</span>
+        </div>
+      </div>
+
+      <div id="dashboard_conteudo">
+        <h1>Seu Desempenho</h1>
+
+        <div id="cards_dashboard">
+          <div id="card_dash">
+            <h3>Pontuação no último Quiz</h3>
+            <span id="pontuacao">0</span>
+          </div>
+
+          <div id="card_dash">
+            <h3>Acertos no último Quiz</h3>
+            <span id="acertos">0</span>
+          </div>
+
+          <div id="card_dash">
+            <h3>Erros no último Quiz</h3>
+            <span id="erros">0</span>
+          </div>
+
+          <div id="card_dash">
+            <h3>Quizzes feitos</h3>
+            <span id="quizzes">0</span>
+          </div>
+        </div>
+
+        <div id="grafico">
+          <h2>Desempenho</h2>
+          <div id="area_grafico">
+            <div id="container_grafico">
+              <h2>Desempenho no Quiz</h2>
+              <canvas id="graficoPizza"></canvas>
+            </div>
+
+            <div id="container_grafico">
+              <h2>Evolução das Tentativas</h2>
+              <canvas id="graficoLinha"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+window.onload = function () {
+
+    if (!sessionStorage.ID_USUARIO) {
+        window.location.href = "./login.html";
+        return;
+    }
+
+    document.getElementById("nomeUsuario").innerText = sessionStorage.NOME_USUARIO;
+    document.getElementById("emailUsuario").innerText = sessionStorage.EMAIL_USUARIO;
+
+
+
+    fetch(`/dashboard/desempenho/${sessionStorage.ID_USUARIO}`)
+        .then(res => res.json())
+        .then(dados => {
+            console.log("Desempenho:", dados);
+
+            if (dados.length == 0) return;
+
+            let acertos = Number(dados[0].acertos) || 0;
+            let erros = Number(dados[0].erros) || 0;
+
+            document.getElementById("acertos").innerText = acertos;
+            document.getElementById("erros").innerText = erros;
+
+            let total = acertos + erros;
+            let pontuacao = 0;
+
+            if (total > 0) {
+                pontuacao = Math.round((acertos / total) * 100);
+            }
+
+            document.getElementById("pontuacao").innerText = pontuacao + "%";
+
+            new Chart(document.getElementById("graficoPizza"), {
+                type: 'pie',
+                data: {
+                    labels: ["Acertos", "Erros"],
+                    datasets: [{
+                        data: [acertos, erros]
+                    }]
+                }
+            });
+
+        });
+
+    fetch(`/dashboard/quizzes/${sessionStorage.ID_USUARIO}`)
+        .then(res => res.json())
+        .then(dados => {
+            console.log("Total quizzes:", dados);
+
+            let total = dados[0].totalQuizzes || 0;
+            document.getElementById("quizzes").innerText = total;
+        });
+
+
+        fetch(`/dashboard/tentativas/${sessionStorage.ID_USUARIO}`)
+    .then(res => res.json())
+    .then(dados => {
+        console.log("Tentativas:", dados);
+
+        if (dados.length === 0) {
+            console.log("Sem dados para gráfico");
+            return;
+        }
+
+        dados.reverse();
+
+        let labels = [];
+        let pontuacoes = [];
+
+        dados.forEach((tentativa, index) => {
+            let acertos = Number(tentativa.acertos);
+            let erros = Number(tentativa.erros);
+
+            let total = acertos + erros;
+
+            let porcentagem = 0;
+
+            if (total > 0) {
+              porcentagem = Math.round((acertos / total) * 100);
+            }
+
+            labels.push(`Tentativa ${tentativa.id}`);
+            pontuacoes.push(porcentagem);
+        });
+
+        new Chart(document.getElementById("graficoLinha"), {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Pontuação (%)",
+                    data: pontuacoes
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+    })
+    .catch(err => {
+        console.log("Erro gráfico:", erro);
+});
+}
+</script>
+
