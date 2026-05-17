@@ -1,128 +1,155 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./src/style.css">
+    <link rel="stylesheet" href="./src/style.css" />
     <script src="./src/script.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <script src="./src/sessao.js"></script>
-</head>
-<body onload="carregarQuiz()"> 
+  </head>
+  <body onload="carregarQuiz(), timer()"">
     <div id="container_header">
-        <img src="./src/Imagens/logof1preta.png" alt="">
-        <ul>
+      <img src="./src/Imagens/logof1preta.png" alt="" />
+      <ul>
+        <li onclick="home()">Home</li>
+        <li onclick="categoria()">Categoria</li>
+        <li onclick="equipes()">Equipes</li>
+        <li onclick="icones()">Icones</li>
+        <li onclick="quiz()">Quiz</li>
+        <li onclick="perfil()">Perfil</li>
+      </ul>
+    </div>
+    <div id="container_pai">
+      <div id="sidebar_quiz">
+        <div id="titulo_timer">
+          <h2>TEMPO</h2>
+        </div>
+        <div id="timer">
+          <span id="hora">00</span>:<span id="texto_min">00</span>:<span
+            id="texto_seg"
+            >00</span
+          >
+        </div>
+        <div id="titulo_sidebar">
+          <h2>QUESTÕES</h2>
+        </div>
+
+        <div id="lista_questoes">
+          <div id="questao_1" class="questao ativa">
+            <span>Questão 1</span>
+          </div>
+
+          <div id="questao_2" class="questao">
+            <span>Questão 2</span>
+          </div>
+
+          <div id="questao_3" class="questao">
+            <span>Questão 3</span>
+          </div>
+
+          <div id="questao_4" class="questao">
+            <span>Questão 4</span>
+          </div>
+
+          <div id="questao_5" class="questao">
+            <span>Questão 5</span>
+          </div>
+
+          <div id="questao_6" class="questao">
+            <span>Questão 6</span>
+          </div>
+
+          <div id="questao_7" class="questao">
+            <span>Questão 7</span>
+          </div>
+
+          <div id="questao_8" class="questao">
+            <span>Questão 8</span>
+          </div>
+
+          <div id="questao_9" class="questao">
+            <span>Questão 9</span>
+          </div>
+
+          <div id="questao_10" class="questao">
+            <span>Questão 10</span>
+          </div>
+        </div>
+      </div>
+      <div id="container_questoes">
+        <div id="container_pergunta">
+          <h1 id="tituloPergunta">Questao</h1>
+
+          <p id="textoPergunta"></p>
+
+          <div id="respostas"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer id="footer">
+      <div id="footer_container">
+        <div id="footer_infos">
+          <img src="./src/Imagens/logoPortal.png" alt="" />
+          <p>De Fã para Fã.</p>
+        </div>
+
+        <div id="footer_infos">
+          <h3>Navegação</h3>
+          <ul>
             <li onclick="home()">Home</li>
             <li onclick="categoria()">Categoria</li>
             <li onclick="equipes()">Equipes</li>
-            <li onclick="icones()">Icones</li>
-            <li onclick="quiz()">Quiz</li>
-            <li onclick="perfil()">Perfil</li>
-        </ul>
-    </div>
-    <div id="container_pai">
-        <div id="container_questoes">
-            <div id="container_pergunta">
-                <h1 id="tituloPergunta">Questao</h1>
-    
-                <p id="textoPergunta"></p>
-    
-                <div id="respostas">
-                    
-                </div>
-            </div>
-            <div id="container_qtdPerguntas">
-                <div id="questoes">Q1</div>
-                <div id="questoes">Q2</div>
-                <div id="questoes">Q3</div>
-                <div id="questoes">Q4</div>
-                <div id="questoes">Q5</div>
-                <div id="questoes">Q6</div>
-                <div id="questoes">Q7</div>
-                <div id="questoes">Q8</div>
-                <div id="questoes">Q9</div>
-                <div id="questoes">Q10</div>
-                <div id="questoes">Q11</div>
-                <div id="questoes">Q12</div>
-                <div id="questoes">Q13</div>
-                <div id="questoes">Q14</div>
-                <div id="questoes">Q15</div>
-                <div id="questoes">Q16</div>
-                <div id="questoes">Q17</div>
-                <div id="questoes">Q18</div>
-                <div id="questoes">Q19</div>
-                <div id="questoes">Q20</div>
-                <div id="questoes">Q21</div>
-                <div id="questoes">Q22</div>
-                <div id="questoes">Q23</div>
-                <div id="questoes">Q24</div>
-                <div id="questoes">Q25</div>
-                <div id="questoes">Q26</div>
-                <div id="questoes">Q27</div>
-                <div id="questoes">Q28</div>
-                <div id="questoes">Q29</div>
-                <div id="questoes">Q30</div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <footer id="footer">
-    <div id="footer_container">
-
-        <div id="footer_infos">
-            <img src="./src/Imagens/logoPortal.png" alt="">
-            <p>Lider em soluções tecnológicas.</p>
+          </ul>
         </div>
 
         <div id="footer_infos">
-            <h3>Navegação</h3>
-            <ul>
-                <li onclick="home()">Home</li>
-                <li onclick="categoria()">Categoria</li>
-                <li onclick="equipes()">Equipes</li>
-            </ul>
+          <h3>Contato</h3>
+          <p><b>E-Mail:</b> 📧 contato@portalf1.com</p>
+          <p><b>WhatsApp:</b> 📞 (11) 99999-9999</p>
         </div>
+      </div>
 
-        <div id="footer_infos">
-            <h3>Contato</h3>
-            <p><b>E-Mail:</b> 📧 contato@portalf1.com</p>
-            <p><b>WhatsApp:</b> 📞 (11) 99999-9999</p>
-        </div>
-
-    </div>
-
-    <div class="footer-bottom">
+      <div class="footer-bottom">
         <p>© 2026 Portal F1</p>
-    </div>
-</footer>
-</body>
+      </div>
+    </footer>
+  </body>
 </html>
 
 <script>
-let perguntas = [];
-let indiceAtual = 0;
-let acertos = 0;
-let erros = 0;
+  let perguntas = [];
+  let indiceAtual = 0;
+  let acertos = 0;
+  let erros = 0;
 
-function carregarQuiz() {
+  function carregarQuiz() {
     fetch("/quiz/listar")
-        .then(res => res.json())
-        .then(data => {
-            perguntas = data;
-            mostrarPergunta();
-        })
-        .catch(err => {
-            console.log("Erro ao carregar quiz:", err);
-        });
-}
+      .then((res) => res.json())
+      .then((data) => {
+        while (perguntas.length < 10) {
+          let numeroAleatorio = Math.floor(Math.random() * data.length);
 
-function mostrarPergunta() {
+          let perguntaSorteada = data[numeroAleatorio];
+
+          if (!perguntas.includes(perguntaSorteada)) {
+            perguntas.push(perguntaSorteada);
+          }
+        }
+
+        mostrarPergunta();
+      })
+      .catch((erro) => {
+        console.log("Erro ao carregar quiz:", erro);
+      });
+  }
+
+  function mostrarPergunta() {
     if (indiceAtual >= perguntas.length) {
-        finalizarQuiz();
-        return;
+      finalizarQuiz();
+      return;
     }
 
     let p = perguntas[indiceAtual];
@@ -150,56 +177,104 @@ function mostrarPergunta() {
 
         <button onclick="responder()">Próxima</button>
     `;
-}
+  }
 
-function responder() {
+  function responder() {
     let selecionada = document.querySelector('input[name="resposta"]:checked');
 
     if (!selecionada) {
-        alert("Selecione uma resposta!");
-        return;
+      alert("Selecione uma resposta!");
+      return;
     }
 
     let respostaUsuario = selecionada.value;
     let correta = perguntas[indiceAtual].correta;
 
     if (respostaUsuario === correta) {
-        acertos++;
+      acertos++;
     } else {
-        erros++;
+      erros++;
     }
 
     indiceAtual++;
     mostrarPergunta();
-}
+    destacarQuestao();
+  }
 
-function finalizarQuiz() {
+  function finalizarQuiz() {
     let total = perguntas.length;
     let pontuacao = (acertos / total) * 100;
     salvarResultado(acertos, erros);
-    window.location.href = "./dashboard.html"
-}
+    window.location.href = "./dashboard.html";
+  }
 
-function salvarResultado(acertos, erros) {
-
+  function salvarResultado(acertos, erros) {
     fetch("/quiz/salvarResultado", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            idUsuario: sessionStorage.ID_USUARIO,
-            acertos: acertos,
-            erros: erros
-        })
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idUsuario: sessionStorage.ID_USUARIO,
+        acertos: acertos,
+        erros: erros,
+      }),
     })
-    .then(res => {
+      .then((res) => {
         if (res.ok) {
-            console.log("Resultado salvo!");
+          console.log("Resultado salvo!");
         } else {
-            console.log("Erro ao salvar resultado");
+          console.log("Erro ao salvar resultado");
         }
-    })
-    .catch(err => console.log(err));
+      })
+      .catch((erro) => console.log(erro));
+  }
+
+  function destacarQuestao() {
+    let questoes = document.querySelectorAll(".questao");
+
+    questoes.forEach((q) => {
+      q.classList.remove("ativa");
+    });
+
+    document
+      .getElementById(`questao_${indiceAtual + 1}`)
+      .classList.add("ativa");
+  }
+
+  let min = 15;
+  let seg = 0;
+
+  function timer() {
+
+  const intervalo = setInterval(() => {
+
+    texto_min.innerText = String(min).padStart(2, "0");
+    texto_seg.innerText = String(seg).padStart(2, "0");
+
+    for (let i = seg; i >= 0; i--) {
+      if (min == 0 && seg == 0) {
+        clearInterval(intervalo);
+        let questoesRestantes = perguntas.length - indiceAtual;
+        erros += que
+        finalizarQuiz();
+        return;
+      }
+
+      seg--;
+      
+      if (seg < 0) {
+
+        if (min > 0) {
+          min--;
+          seg = 59;
+        }
+
+      }
+      break;
+    }
+
+  }, 1000);
+
 }
 </script>
