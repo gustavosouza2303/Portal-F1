@@ -493,12 +493,15 @@ button:hover {
 #container_bannerCategoria {
     position: relative;
     height: 100vh;
-    margin-bottom: 150px;
+    margin-bottom: 50px;
 }
 
 #container_bannerCategoria img {
     width: 100%;
     height: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 #containerConteudo {
@@ -514,9 +517,8 @@ button:hover {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding:250px 0px 250px 0px;
+    padding:150px 0px 150px 0px;
     gap: 150px;
-    border-bottom: 3px solid black;
     width: 100%;
 }
 
@@ -1051,9 +1053,8 @@ button:hover {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding:250px 0px 250px 0px;
+    padding:150px 0px 150px 0px;
     gap: 150px;
-    border-bottom: 3px solid black;
     color: rgb(0, 0, 0);
 
 }
