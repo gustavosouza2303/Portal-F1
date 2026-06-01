@@ -1,7 +1,7 @@
 const dashboardModel = require("../models/dashboardModel");
 
 function buscarDesempenho(req, res) {
-    var idUsuario = req.params.idUsuario;
+    var idUsuario = req.body.idUsuario;
 
     dashboardModel.buscarDesempenho(idUsuario)
         .then(resultado => res.json(resultado))
@@ -9,7 +9,7 @@ function buscarDesempenho(req, res) {
 }
 
 function contarQuizzes(req, res) {
-    var idUsuario = req.params.idUsuario;
+    var idUsuario = req.body.idUsuario;
 
     dashboardModel.contarQuizzes(idUsuario)
         .then(resultado => res.json(resultado))
@@ -17,7 +17,7 @@ function contarQuizzes(req, res) {
 }
 
 function listarTentativas(req, res) {
-    var idUsuario = req.params.idUsuario;
+    var idUsuario = req.body.idUsuario;
 
     dashboardModel.listarTentativas(idUsuario)
         .then(resultado => res.json(resultado))

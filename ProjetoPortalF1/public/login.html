@@ -53,14 +53,13 @@
 
         if (emailVar == "" || senhaVar == "") {
             divErro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
             return false;
         }
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
 
-        fetch("/usuarios/autenticar", {
+        fetch("/usuarios/logar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -94,7 +93,6 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
                 });
             }
 

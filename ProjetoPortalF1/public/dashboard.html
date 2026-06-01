@@ -95,7 +95,15 @@
 
 
 
-    fetch(`/dashboard/desempenho/${sessionStorage.ID_USUARIO}`)
+    fetch("/dashboard/desempenho", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+        body: JSON.stringify({
+        idUsuario: sessionStorage.ID_USUARIO
+      })
+      })
         .then(res => res.json())
         .then(dados => {
             console.log("Desempenho:", dados);
@@ -129,7 +137,15 @@
 
         });
 
-    fetch(`/dashboard/quizzes/${sessionStorage.ID_USUARIO}`)
+    fetch("/dashboard/quizzes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+        body: JSON.stringify({
+        idUsuario: sessionStorage.ID_USUARIO
+       })
+    })
         .then(res => res.json())
         .then(dados => {
             console.log("Total quizzes:", dados);
@@ -144,7 +160,15 @@
         });
 
 
-        fetch(`/dashboard/tentativas/${sessionStorage.ID_USUARIO}`)
+        fetch("/dashboard/tentativas", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+          idUsuario: sessionStorage.ID_USUARIO
+        })
+      })
     .then(res => res.json())
     .then(dados => {
         console.log("Tentativas:", dados);

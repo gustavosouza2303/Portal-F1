@@ -9,8 +9,8 @@ function listarPerguntas() {
 
 function salvarResultado(idUsuario, acertos, erros) {
     var instrucaoSql = `
-        INSERT INTO resultadoQuiz (fkUsuario, acertos, erros)
-        VALUES (${idUsuario}, ${acertos}, ${erros});
+        INSERT INTO resultadoQuiz (fkUsuario, acertos, erros) VALUES 
+            (${idUsuario}, ${acertos}, ${erros});
     `;
     return database.executar(instrucaoSql);
 }
