@@ -185,7 +185,7 @@
     if (!selecionada) {
       alert("Selecione uma resposta!");
       return;
-    }
+    } 
 
     let respostaUsuario = selecionada.value;
     let correta = perguntas[indiceAtual].correta;
@@ -256,7 +256,7 @@
       if (min == 0 && seg == 0) {
         clearInterval(intervalo);
         let questoesRestantes = perguntas.length - indiceAtual;
-        erros += que
+        erros += questoesRestante
         finalizarQuiz();
         return;
       }
