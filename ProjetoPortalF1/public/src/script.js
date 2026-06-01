@@ -25,4 +25,15 @@ function perfil() {
 function icones() {
     window.location.href= "./icones.html"
 }
+
+function login() {
+    window.location.href= "./login.html"
+}
  
+ window.onload = function () {
+
+    if (!sessionStorage.ID_USUARIO) {
+        buttonLogin.style.display = "block";
+        return;
+    }
+} 

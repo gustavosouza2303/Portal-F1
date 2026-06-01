@@ -15,6 +15,7 @@
     </video>
     <div id="container_inputs">
         <div id="cadastro">
+          <h4 onclick="home()">Voltar</h4>
             <div id="tituloCadastro">
                 <h1>Portal F1</h1>
                 <h2>Cadastro</h2>
@@ -133,7 +134,7 @@
         if (resposta.ok) {
 
           divErro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+            `Cadastro realizado com sucesso! <br> Redirecionando para tela de Login...`;
 
           setTimeout(() => {
             window.location = "login.html";

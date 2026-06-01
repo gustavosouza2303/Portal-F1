@@ -15,6 +15,23 @@ body {
     background: #f9f1f1;
 }
 
+#navegador {
+    display: flex;
+}
+
+#navegador button{
+    align-self: center;
+    width: 100px;
+    border: none;
+    height: 35px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #ffffff, #fafafa);
+    font-size: 15px;
+    color: black;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
 /* Login / Cadastro */
 
 #container_bannerLogin {
@@ -49,6 +66,11 @@ body {
     flex-direction: column;
     align-items: center;
 
+}
+
+#container_inputs h4 {
+    cursor: pointer;
+    margin: 0;
 }
 
 /* Login */
@@ -302,7 +324,7 @@ border-bottom: 3px solid black;
 }
 
 
-@keyframes appear {
+@keyframes appear { 
     from {
         opacity: 0;
         transform: scale(0.8);
@@ -313,13 +335,13 @@ border-bottom: 3px solid black;
         transform: scale(1);
         filter: blur(0px);
     }
-}
+}  
 
 .card {
     animation: appear linear;
     animation-timeline: view();
     animation-range: entry 0%;
-}
+} /* classe responsável pela animação dos cards */
 
 
 #container_conheca {
@@ -1011,9 +1033,15 @@ button:hover {
     gap: 300px;
 }
 
-#container_grafico #graficoLinha {
+#area_grafico #container_aviso {
+    font-weight: bolder;
+    font-size: 50px;
+}
+
+#area_grafico #container_grafico #graficoLinha {
     width: 500px;
 }
+
 
 /* Icones */
 

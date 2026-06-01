@@ -1,6 +1,6 @@
 const usuarioModel = require("../models/usuarioModel")
 
-function autenticar(req, res) {
+function logar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
 
@@ -10,15 +10,15 @@ function autenticar(req, res) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
 
-        usuarioModel.autenticar(email, senha)
+        usuarioModel.logar(email, senha)
             .then(
-                function (resultadoAutenticar) {
-                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+                function (resultadoLogar) {
+                    console.log(`\nResultados encontrados: ${resultadoLogar.length}`);
+                    console.log(`Resultados: ${JSON.stringify(resultadoLogar)}`); // transforma JSON em String
 
-                    if (resultadoAutenticar.length == 1) {
-                        res.json(resultadoAutenticar[0]);
-                    } else if (resultadoAutenticar.length == 0) {
+                    if (resultadoLogar.length == 1) {
+                        res.json(resultadoLogar[0]);
+                    } else if (resultadoLogar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
                         res.status(403).send("Mais de um usuário com o mesmo login e senha!");
@@ -70,6 +70,6 @@ function cadastrar(req, res) {
 }
 
 module.exports = {
-    autenticar,
+    logar,
     cadastrar
 }

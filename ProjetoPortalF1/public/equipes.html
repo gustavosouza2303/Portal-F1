@@ -10,14 +10,19 @@
 <body>
     <div id="container_header">
         <img src="./src/Imagens/logof1preta.png" alt="">
-        <ul>
-            <li onclick="home()">Home</li>
-            <li onclick="categoria()">Categoria</li>
-            <li onclick="equipes()">Equipes</li>
-            <li onclick="icones()">Icones</li>
-            <li onclick="quiz()">Quiz</li>
-            <li onclick="perfil()">Perfil</li>
-        </ul>
+        <div id="navegador">
+            <ul>
+                <li onclick="home()">Home</li>
+                <li onclick="categoria()">Categoria</li>
+                <li onclick="equipes()">Equipes</li>
+                <li onclick="icones()">Icones</li>
+                <li onclick="quiz()">Quiz</li>
+                <li onclick="perfil()">Perfil</li>
+            </ul>
+            <ul style="display: none;" id="buttonLogin">
+                <button onclick="login()">Login</button>
+            </ul>
+        </div>
     </div>
 
     <div id="container_bannerEquipes" class="banner">
@@ -1015,7 +1020,7 @@
 
         <div id="footer_infos">
             <img src="./src/Imagens/logoPortal.png" alt="">
-            <p>Lider em soluções tecnológicas.</p>
+            <p>De Fã para Fã.</p>
         </div>
 
         <div id="footer_infos">

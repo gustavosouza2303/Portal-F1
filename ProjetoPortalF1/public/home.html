@@ -13,14 +13,19 @@
     <!-- onload="validarSessao()" -->
     <div id="container_header">
         <img src="./src/Imagens/logof1preta.png" alt="">
-        <ul>
-            <li onclick="home()">Home</li>
-            <li onclick="categoria()">Categoria</li>
-            <li onclick="equipes()">Equipes</li>
-            <li onclick="icones()">Icones</li>
-            <li onclick="quiz()">Quiz</li>
-            <li onclick="perfil()">Perfil</li>
-        </ul>
+        <div id="navegador">
+            <ul>
+                <li onclick="home()">Home</li>
+                <li onclick="categoria()">Categoria</li>
+                <li onclick="equipes()">Equipes</li>
+                <li onclick="icones()">Icones</li>
+                <li onclick="quiz()">Quiz</li>
+                <li onclick="perfil()">Perfil</li>
+            </ul>
+            <ul style="display: none;" id="buttonLogin">
+                <button onclick="login()">Login</button>
+            </ul>
+        </div>
     </div>
     <div id="container_banner" class="banner">
         <img src="./src/Imagens/logoPortal.png" alt="">

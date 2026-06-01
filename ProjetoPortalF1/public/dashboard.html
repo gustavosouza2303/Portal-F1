@@ -36,8 +36,8 @@
         </div>
 
         <div id="menu">
-          <span>🏆 Ranking</span>
-          <span onclick="limparSessao()">🚪 Sair</span>
+
+          <span onclick="limparSessao()">Sair</span>
         </div>
       </div>
 
@@ -69,12 +69,15 @@
         <div id="grafico">
           <h2>Desempenho</h2>
           <div id="area_grafico">
-            <div id="container_grafico">
+            <div id="container_aviso" style="display: none;">
+              Nenhum Quiz Realizado!
+            </div>
+            <div id="container_grafico" class="graficos">
               <h2>Desempenho no Quiz</h2>
               <canvas id="graficoPizza"></canvas>
             </div>
 
-            <div id="container_grafico">
+            <div id="container_grafico" class="graficos">
               <h2>Evolução das Tentativas</h2>
               <canvas id="graficoLinha"></canvas>
             </div>
@@ -86,12 +89,6 @@
 </html>
 
 <script>
-window.onload = function () {
-
-    if (!sessionStorage.ID_USUARIO) {
-        window.location.href = "./login.html";
-        return;
-    }
 
     document.getElementById("nomeUsuario").innerText = sessionStorage.NOME_USUARIO;
     document.getElementById("emailUsuario").innerText = sessionStorage.EMAIL_USUARIO;
@@ -138,7 +135,12 @@ window.onload = function () {
             console.log("Total quizzes:", dados);
 
             let total = dados[0].totalQuizzes || 0;
-            document.getElementById("quizzes").innerText = total;
+            if (total > 0 ) {
+              document.getElementById("quizzes").innerText = total;
+            } else {
+              console.log("Não fez nenhum quiz")
+              document.getElementById("quizzes").innerText = `Nenhum quiz realizado!`;
+            }
         });
 
 
@@ -148,7 +150,11 @@ window.onload = function () {
         console.log("Tentativas:", dados);
 
         if (dados.length === 0) {
-            console.log("Sem dados para gráfico");
+            console.log("Sem dados para o gráfico");
+            document.querySelectorAll(".graficos").forEach(div => {
+              div.style.display = "none";
+            });
+            document.getElementById("container_aviso"). style.display = 'block';
             return;
         }
 
@@ -164,12 +170,13 @@ window.onload = function () {
             let total = acertos + erros;
 
             let porcentagem = 0;
-
+            
             if (total > 0) {
               porcentagem = Math.round((acertos / total) * 100);
             }
 
-            labels.push(`Tentativa ${tentativa.id}`);
+
+            labels.push(`Tentativa ${index + 1}`);
             pontuacoes.push(porcentagem);
         });
 
@@ -196,6 +203,5 @@ window.onload = function () {
     .catch(erro => {
         console.log("Erro gráfico:", erro);
 });
-}
 </script>
 
