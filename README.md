@@ -4,7 +4,7 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/gustavosouza2303/Portal-F1?style=for-the-badge)
 ![GitHub forks](https://img.shields.io/github/forks/gustavosouza2303/Portal-F1?style=for-the-badge)
 ![GitHub issues](https://img.shields.io/github/issues/gustavosouza2303/Portal-F1?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Finalizado-green?style=for-the-badge)
 
 <div style="display: inline_block">
   <img align="center" alt="Gusta-Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
